@@ -5,11 +5,11 @@ import EventsList from '../components/EventsList';
 const EventsPage = () => {
   const data = useLoaderData();
 
-  if (data.isError) {
-    return (
-      <p>{data.message}</p>
-    );
-  }
+  // if (data.isError) {
+  //   return (
+  //     <p>{data.message}</p>
+  //   );
+  // }
 
   const events = data.events;
 
@@ -24,7 +24,9 @@ export const loader = async () => {
   const response = await fetch('http://localhost:8080/events');
 
   if (!response.ok) {
-    return { isError: true, message: 'Could not fetch events.' };
+    // return { isError: true, message: 'Could not fetch events.' };
+    // eslint-disable-next-line
+    throw { message: 'Could not fetch events.' };
   } else {
     return response;
   }
